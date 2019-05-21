@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import SearchIcon from '../../assets/images/search.svg';
 
-export const Container = styled.header `
+export const Container = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 20px 0px;
+    margin: 10px 0px;
 `;
 
-export const Search = styled.div `
+export const Search = styled.div`
     display: flex;
     align-items: center;
     border-radius: 12px;
@@ -25,7 +25,7 @@ export const Search = styled.div `
     }
 `;
 
-export const User = styled.div `
+export const User = styled.div`
     display: flex;
     align-items: center;
     font-size: 13px;
