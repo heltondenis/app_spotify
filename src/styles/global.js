@@ -1,6 +1,9 @@
-import { createGlobalStyle } from 'styled-components';
+import {
+    createGlobalStyle
+} from 'styled-components';
+import 'rc-slider/assets/index.css';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle `
 * {
     margin: 0;
     padding: 0;
@@ -20,5 +23,6 @@ body {
     color: white;
 }
 `;
+
 
 export default GlobalStyle;
