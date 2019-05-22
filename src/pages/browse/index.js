@@ -1,18 +1,55 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Container, Title, List, Playlist } from './styles';
 
-const Browse = () => (
-    <Container>
-        <Title>Navegar</Title>
-        <List>
-            <Playlist to="/playlists/1">
-                <img src="https://cdn-images-1.medium.com/max/1200/1*vzZM9u2JXHTKjk2lXnepzQ.jpeg"
-                />
-                <strong>Rock dos bons</strong>
-                <p>Relaxe enquanto você programa ouvindo apenas as melhores do rock</p>
-            </Playlist>
-        </List>
-    </Container>
-);
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 
-export default Browse;
+class Browse extends Component {
+
+    static propTypes = {
+        getPlaylistRequest: PropTypes.func.isRequired,
+        playlists: PropTypes.shape({
+            data: PropTypes.arrayOf(PropTypes.shape({
+                id: PropTypes.number,
+                title: PropTypes.string,
+                thumbnail: PropTypes.string,
+                description: PropTypes.string
+            }))
+        }).isRequired,
+    }
+
+    componentDidMount() {
+        this.props.getPlaylistsRequest();
+    }
+
+    render() {
+        return (
+            <Container>
+                <Title>Navegar</Title>
+                <List>
+
+                    {this.props.playlists.data.map(playlist => (
+                        <Playlist key={playlist.id} to={`playlists/${playlist.id}`}>
+                            <img
+                                src={playlist.thumbnail}
+                            />
+                            <strong>{playlist.title}</strong>
+                            <p>{playlist.description}</p>
+                        </Playlist>
+                    ))}
+                </List>
+            </Container>
+        )
+    }
+}
+
+const mapStateToProps = state => ({
+    playlists: state.playlists,
+});
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(PlaylistsActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Browse);

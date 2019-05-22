@@ -1,6 +1,8 @@
-    import styled from 'styled-components';
+import styled from 'styled-components';
 
-    export const Container = styled.aside `
+import { Spinner } from '../../components/Loading/styles';
+
+export const Container = styled.aside`
         height: 100%;
         width: 200px;
         background: #121212;
@@ -16,7 +18,7 @@
     `;
 
 
-    export const Nav = styled.ul `
+export const Nav = styled.ul`
     list-style: none;
     margin-top: 25px;
 
@@ -25,12 +27,16 @@
     }
 
     li {
+
+        display: flex;
+        align-items: center;
+
         a {
             color: inherit;
             text-decoration: none;
             font-size: 13px;
             line-height: 32px;
-            font-weight: ${props => (props.main ? 'bold' : 'normal')}
+            font-weight: ${props => (props.main ? 'bold' : 'normal')};
 
                 &:hover{
                     color: #fff;
@@ -44,10 +50,15 @@
             letter-spacing: 1.11px;
             font-weight: 300;
         }
-    }
-    `;
 
-    export const NewPlayList = styled.button `
+        ${Spinner} {
+            height: 15px;
+            margin-left: 5px;
+        }
+    }
+`;
+
+export const NewPlayList = styled.button`
         background: transparent;
         border: 0;
         border-top: 1px solid #282828;
