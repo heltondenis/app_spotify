@@ -1,17 +1,20 @@
-import React from 'react';
-import { Container, Search, User } from './styles';
+import React from "react";
+import { Container, Search, User } from "./styles.js";
 
 const Header = () => (
-    <Container>
-        <Search>
-            <input placeholder="Search" />
-        </Search>
+  <Container>
+    <Search>
+      <input placeholder="Search" />
+    </Search>
 
-        <User>
-            <img src="https://avatars2.githubusercontent.com/u/28577527?v=4" alt="Avatar"></img>
-            Helton Denis
-        </User>
-    </Container>
+    <User>
+      <img
+        src="https://avatars2.githubusercontent.com/u/2254731?v=4"
+        alt="avatar"
+      />
+      Helton Denis
+    </User>
+  </Container>
 );
 
 export default Header;
