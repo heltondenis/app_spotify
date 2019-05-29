@@ -21,6 +21,10 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: white;
 }
+
+button {
+    cursor: pointer;
+}
 `;
 
 
